@@ -1,0 +1,29 @@
+##Q1:
+SELECT * FROM Users WHERE user_id NOT IN 
+(SELECT user_id FROM Transaction WHERE product <> 'BMW')
+
+##C2:
+SELECT * FROM runners r
+LEFT JOIN 
+(SELECT winner_id,status FROM races
+WHERE status = 1
+) rs
+ON r.id = rs.winner_id
+
+##C3:
+SELECT Id FROM  Customers 
+WHERE ReferredBy <>2
+
+##C4: 
+SELECT DISTINCT * FROM (
+SELECT Id, Name, ReferredBy,Null as Username
+FROM Customers
+UNION
+SELECT Id, Name, Null as ReferredBy, Username FROM User)
+
+##C5:
+SELECT TOP 1 * FROM (
+SELECT TOP 2 * 
+FROM Diem
+ORDER BY Diem DESC)
+ORDER BY Diem
